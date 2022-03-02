@@ -18,8 +18,9 @@ variable "private_subnet_ids" {
   type = list(string)
 }
 
-variable "map_users" {
-  type = list(string)
+variable "enable_irsa" {
+  type = bool
+  default = true
 }
 
 variable "tags" {

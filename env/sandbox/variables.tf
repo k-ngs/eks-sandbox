@@ -8,13 +8,14 @@ variable "profile" {
   type        = string
 }
 
-variable "map_users" {
-  type = list(string)
-}
-
 variable "env" {
   type = string
   default = "eks-sandbox"
+}
+
+variable "cluster_name" {
+  type = string
+  default = "eks-sandbox-cluster"
 }
 
 locals {
