@@ -29,6 +29,26 @@ module "eks_cluster" {
   cluster_version    = "1.21"
   subnet_ids         = module.vpc.private_subnets
   private_subnet_ids = module.vpc.private_subnets
+  cluster_sg_additional_rules = {
+    ingress_nodes_karpenter_ports_tcp = {
+      description                = "Karpenter readiness"
+      protocol                   = "tcp"
+      from_port                  = 8443
+      to_port                    = 8443
+      type                       = "ingress"
+      source_node_security_group = true
+    }
+  }
+  node_sg_additional_rules = {
+    aws_lb_controller_webhook = {
+      description                   = "Cluster API to AWS LB Controller webhook"
+      protocol                      = "all"
+      from_port                     = 9443
+      to_port                       = 9443
+      type                          = "ingress"
+      source_cluster_security_group = true
+    }
+  }
 
   tags = merge(
     local.default_tags,

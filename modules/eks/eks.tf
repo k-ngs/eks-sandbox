@@ -17,6 +17,9 @@ module "main" {
       tags = var.tags
     }
   }
+  cluster_security_group_additional_rules = var.cluster_sg_additional_rules
+
+  node_security_group_additional_rules = var.node_sg_additional_rules
 
   tags = var.tags
 }

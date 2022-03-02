@@ -23,6 +23,10 @@ variable "enable_irsa" {
   default = true
 }
 
+variable "cluster_sg_additional_rules" {}
+
+variable "node_sg_additional_rules" {}
+
 variable "tags" {
   type = map(string)
   default = {}
