@@ -1,17 +1,12 @@
 # eks-sandbox
 ## 構築
-1. tfstateを管理するS3bucketを指定する
+※ tfstateはlocalに保存する形となっている。
+1. Init
 ```
-$ cp terraform.sample.tfbackend ./terraform.tfbackend
-```
-terraform.tfbackendの各項目を記載する。
-
-2. Init
-```
-$ terraform init --backend-config=terraform.tfbackend
+$ terraform init
 ```
 
-3. apply
+2. apply
 ```
 $ terraform plan
 // 確認
